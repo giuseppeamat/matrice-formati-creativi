@@ -1,0 +1,357 @@
+<title>Matrice dei formati creativi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: testata, dati del business, poi matrice 40x5 a sinistra e prompt fisso a destra. Su telefono il prompt si apre a tutto schermo. */
+:root{
+  --bg:#000000; --surface:#0d0f0d; --surface-2:#151815; --line:#252925; --line-2:#343a34;
+  --fg:#ffffff; --muted:#a4aaa4; --dim:#737a73;
+  --accent:#47e27a; --accent-ink:#000000; --accent-soft:rgba(71,226,122,.12); --accent-line:rgba(71,226,122,.45);
+  --display:"Montserrat","Helvetica Neue",Arial,sans-serif;
+  --body:"Montserrat","Helvetica Neue",Arial,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1440px;margin:0 auto;padding-inline:clamp(16px,3vw,40px);padding-block:32px 64px}
+a{color:var(--accent)}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* testata */
+.eyebrow{font-family:var(--display);font-weight:700;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(30px,4.6vw,56px);line-height:1.02;letter-spacing:-.02em;margin:10px 0 14px;text-wrap:balance;text-transform:uppercase}
+h1 .n{color:var(--accent)}
+.lede{max-width:68ch;color:var(--muted);font-size:16px;margin:0}
+.head{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:40px;align-items:end;padding-bottom:28px;border-bottom:1px solid var(--line)}
+.steps{display:grid;gap:10px;margin:0;padding:0;list-style:none;counter-reset:s}
+.steps li{display:grid;grid-template-columns:28px 1fr;gap:10px;align-items:baseline;color:var(--muted);font-size:14px}
+.steps li::before{counter-increment:s;content:counter(s);font-family:var(--display);font-weight:800;color:var(--accent-ink);background:var(--accent);width:24px;height:24px;border-radius:50%;display:grid;place-items:center;font-size:12px}
+.steps b{color:var(--fg);font-weight:600}
+
+/* sezioni */
+section{padding-top:32px}
+.sec-h{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:12px 24px;margin-bottom:16px}
+h2{font-family:var(--display);font-weight:800;font-size:20px;letter-spacing:.01em;text-transform:uppercase;margin:0}
+h2 .k{color:var(--accent);margin-right:8px}
+.note{color:var(--dim);font-size:13px}
+
+/* form */
+.form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 20px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:20px}
+.field{display:grid;gap:6px;min-width:0}
+.field.wide{grid-column:1/-1}
+label{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+input,select,textarea{width:100%;background:var(--bg);border:1px solid var(--line-2);border-radius:6px;padding:10px 12px;font-size:14px;color:var(--fg)}
+textarea{min-height:92px;resize:vertical;line-height:1.5}
+input::placeholder,textarea::placeholder{color:var(--dim)}
+input:focus,select:focus,textarea:focus{border-color:var(--accent);outline:none}
+.form-actions{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;border-top:1px solid var(--line);padding-top:14px;margin-top:4px}
+.btns{display:flex;flex-wrap:wrap;gap:8px}
+.btn{border:1px solid var(--line-2);background:transparent;border-radius:999px;padding:8px 16px;font-size:13px;font-weight:600;cursor:pointer}
+.btn:hover{border-color:var(--fg)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn.primary:hover{filter:brightness(1.08)}
+.badge-ex{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-ink);background:var(--accent);padding:3px 8px;border-radius:4px}
+
+/* livelli */
+.levels{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.lv{background:var(--surface);padding:14px 16px;display:grid;gap:6px;align-content:start}
+.lv .num{font-family:var(--display);font-weight:800;font-size:28px;line-height:1;color:var(--accent)}
+.lv .nm{font-weight:700;font-size:14px}
+.lv .wh{color:var(--muted);font-size:13px}
+.lv .ex{font-family:var(--mono);font-size:12px;color:var(--dim)}
+.lv .cov{margin-top:6px;font-size:12px;font-weight:600;color:var(--dim)}
+.lv .cov.on{color:var(--accent)}
+.covsum{font-size:14px;color:var(--muted)}
+.covsum b{color:var(--fg);font-family:var(--display);font-weight:800;font-size:18px}
+
+/* strumenti */
+.tools{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:20px 0 14px}
+.search{flex:1 1 220px;max-width:320px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1px solid var(--line-2);background:transparent;border-radius:999px;padding:6px 12px;font-size:12px;font-weight:600;color:var(--muted);cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--fg);border-color:var(--fg);color:var(--bg)}
+.toggle{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);cursor:pointer;text-transform:none;letter-spacing:0;font-weight:500}
+.toggle input{width:16px;height:16px;accent-color:var(--accent)}
+.legend{display:flex;flex-wrap:wrap;gap:16px;font-size:12px;color:var(--dim);margin-bottom:10px}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+
+/* area di lavoro */
+.work{display:grid;grid-template-columns:minmax(0,1fr) 460px;gap:20px;align-items:start}
+.mx{border:1px solid var(--line);border-radius:10px;overflow:auto;max-height:78vh;background:var(--surface)}
+table{border-collapse:separate;border-spacing:0;width:100%;min-width:840px}
+th,td{border-bottom:1px solid var(--line);vertical-align:top}
+thead th{position:sticky;top:0;z-index:3;background:var(--surface-2);text-align:left;padding:10px 10px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--line-2)}
+thead th .ln{display:block;font-family:var(--display);font-size:18px;color:var(--accent);letter-spacing:0;line-height:1.1}
+th.fcol,td.fcol{position:sticky;left:0;z-index:2;background:var(--surface);border-right:1px solid var(--line);width:200px;min-width:190px}
+thead th.fcol{z-index:4;background:var(--surface-2)}
+td.fcol{padding:10px 12px}
+.fname{font-weight:700;font-size:13.5px;line-height:1.3}
+.fnum{font-family:var(--mono);color:var(--dim);font-size:11px;margin-right:6px}
+.fdesc{color:var(--dim);font-size:12px;line-height:1.4;margin-top:3px}
+.ffam{display:inline-block;margin-top:6px;font-size:10.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line-2);border-radius:4px;padding:1px 6px}
+td.c{padding:4px}
+.cell{display:block;width:100%;height:100%;min-height:74px;text-align:left;background:transparent;border:1px solid transparent;border-radius:6px;padding:8px 9px;font-size:12.5px;font-weight:500;line-height:1.35;color:var(--fg);cursor:pointer;position:relative}
+.cell:hover{background:var(--surface-2);border-color:var(--line-2)}
+.cell .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--accent);margin-right:6px;vertical-align:1px}
+.cell.act{background:var(--accent-soft)}
+.cell.act::after{content:"attiva";position:absolute;right:7px;bottom:6px;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
+.cell[aria-pressed="true"]{border-color:var(--accent);background:var(--surface-2)}
+tr.hidden{display:none}
+.empty{padding:24px;color:var(--muted)}
+
+/* pannello prompt */
+.panel{position:sticky;top:calc(env(safe-area-inset-top,0px) + 16px);background:var(--surface);border:1px solid var(--line);border-radius:10px;display:flex;flex-direction:column;max-height:calc(100vh - 32px);min-width:0}
+.p-head{padding:18px 20px 14px;border-bottom:1px solid var(--line);display:grid;gap:8px}
+.p-top{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.p-lv{white-space:nowrap;display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--accent-ink);background:var(--accent);border-radius:4px;padding:3px 8px}
+.p-best{font-size:12px;color:var(--accent);font-weight:600}
+.p-title{font-family:var(--display);font-weight:800;font-size:22px;line-height:1.15;margin:0;text-transform:uppercase}
+.p-angle{margin:0;color:var(--muted);font-size:14px}
+.p-angle b{color:var(--fg)}
+.p-actions{display:flex;flex-wrap:wrap;gap:8px;padding:12px 20px;border-bottom:1px solid var(--line)}
+.p-body{overflow:auto;padding:16px 20px 20px;min-height:0}
+pre{margin:0;font-family:var(--mono);font-size:12.5px;line-height:1.6;white-space:pre-wrap;word-break:break-word;color:#e6ece6}
+.close{display:none;border:1px solid var(--line-2);background:transparent;border-radius:999px;width:34px;height:34px;cursor:pointer;font-size:18px;line-height:1}
+.toast{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 24px);transform:translateX(-50%);background:var(--accent);color:var(--accent-ink);font-weight:700;font-size:14px;padding:10px 18px;border-radius:999px;z-index:50}
+footer{margin-top:40px;padding-top:20px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;color:var(--dim);font-size:12px}
+footer b{color:var(--fg);letter-spacing:.12em}
+
+@media (max-width:1100px){
+  .work{grid-template-columns:minmax(0,1fr)}
+  .panel{position:fixed;inset:0;top:0;border-radius:0;max-height:none;z-index:40;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+  .panel.closed{display:none}
+  .close{display:grid;place-items:center}
+  .mx{max-height:none}
+}
+@media (max-width:860px){
+  .head{grid-template-columns:minmax(0,1fr);gap:24px}
+  .form{grid-template-columns:minmax(0,1fr);padding:16px}
+  .levels{grid-template-columns:minmax(0,1fr)}
+  .lv{grid-template-columns:auto 1fr;column-gap:14px}
+  .lv .num{grid-row:span 4}
+  .search{max-width:none}
+}
+@media (prefers-reduced-motion:no-preference){.cell,.btn,.chip{transition:background .15s,border-color .15s}}
+</style>
+
+<div class="wrap">
+  <header class="head">
+    <div>
+      <div class="eyebrow">Keep Growing ↑ · AI Scaling E-commerce</div>
+      <h1>Matrice dei formati creativi <span class="n">40 × 5</span></h1>
+      <p class="lede">Chi scala ha creatività su tutti e cinque i livelli di consapevolezza. Per ogni livello cambia l'angolo, per ogni angolo cambia il formato. Qui hai 40 formati incrociati con i 5 livelli: 200 prompt pronti, compilati con i dati del tuo business.</p>
+    </div>
+    <ol class="steps">
+      <li><span><b>Compila i dati del tuo business</b> una volta sola. Entrano in tutti i prompt.</span></li>
+      <li><span><b>Scegli una casella</b> della matrice: il formato è la riga, il livello è la colonna.</span></li>
+      <li><span><b>Copia il prompt</b> e incollalo in Claude o ChatGPT. Ti restituisce hook, script, note di produzione e copy.</span></li>
+    </ol>
+  </header>
+
+  <section aria-labelledby="h-dati">
+    <div class="sec-h">
+      <h2 id="h-dati"><span class="k">1</span>I dati del tuo business</h2>
+      <span class="note" id="savenote">Restano solo in questo browser.</span>
+    </div>
+    <form class="form" id="form" autocomplete="off">
+      <div class="field"><label for="f-prodotto">Prodotto e cosa fa</label><input id="f-prodotto" data-k="prodotto" placeholder="Es. integratore di magnesio in bustine"></div>
+      <div class="field"><label for="f-prezzo">Prezzo</label><input id="f-prezzo" data-k="prezzo" placeholder="Es. 29 € per 30 giorni"></div>
+      <div class="field"><label for="f-cliente">Cliente ideale</label><input id="f-cliente" data-k="cliente" placeholder="Chi è, quanti anni ha, come vive"></div>
+      <div class="field"><label for="f-problema">Il problema, con le parole del cliente</label><input id="f-problema" data-k="problema" placeholder="Come lo dice lui, non come lo diresti tu"></div>
+      <div class="field"><label for="f-risultato">Il risultato che vuole</label><input id="f-risultato" data-k="risultato" placeholder="Cosa vuole ottenere davvero"></div>
+      <div class="field"><label for="f-meccanismo">Perché il tuo prodotto funziona</label><input id="f-meccanismo" data-k="meccanismo" placeholder="Il meccanismo che gli altri non spiegano"></div>
+      <div class="field"><label for="f-obiezione">L'obiezione principale</label><input id="f-obiezione" data-k="obiezione" placeholder="Il motivo per cui non compra"></div>
+      <div class="field"><label for="f-prove">Prove che hai</label><input id="f-prove" data-k="prove" placeholder="Recensioni, numeri, garanzie, certificazioni"></div>
+      <div class="field"><label for="f-offerta">Offerta attiva e scadenza</label><input id="f-offerta" data-k="offerta" placeholder="Es. spedizione gratis fino a domenica"></div>
+      <div class="field"><label for="f-tono">Tono del brand</label><input id="f-tono" data-k="tono" placeholder="Es. diretto, ironico, mai tecnico"></div>
+      <div class="field"><label for="f-piattaforma">Piattaforma</label>
+        <select id="f-piattaforma" data-k="piattaforma">
+          <option>Meta (Facebook e Instagram)</option><option>TikTok</option><option>YouTube Shorts</option><option>Meta, TikTok e YouTube Shorts</option>
+        </select></div>
+      <div class="field wide"><label for="f-frasi">Frasi vere dei clienti, dalla tua Customer Language Bank</label><textarea id="f-frasi" data-k="frasi" placeholder="Incolla qui recensioni, commenti, messaggi all'assistenza. Una frase per riga, parola per parola."></textarea></div>
+      <div class="form-actions">
+        <span class="note" id="exnote" hidden><span class="badge-ex">Esempio</span> Dati inventati per il workshop. Sostituiscili con i tuoi.</span>
+        <span class="note" id="emnote">I campi vuoti arrivano nel prompt come [DA COMPILARE] e l'AI ti fa le domande che servono.</span>
+        <div class="btns">
+          <button type="button" class="btn" id="b-ex">Carica l'esempio</button>
+          <button type="button" class="btn" id="b-clear">Svuota i campi</button>
+        </div>
+      </div>
+    </form>
+  </section>
+
+  <section aria-labelledby="h-liv">
+    <div class="sec-h">
+      <h2 id="h-liv"><span class="k">2</span>I cinque livelli di consapevolezza</h2>
+      <span class="covsum" id="covsum"></span>
+    </div>
+    <div class="levels" id="levels"></div>
+  </section>
+
+  <section aria-labelledby="h-mx">
+    <div class="sec-h">
+      <h2 id="h-mx"><span class="k">3</span>Scegli formato e livello</h2>
+      <span class="note">Segna le creatività che hai già attive: sopra vedi quanti livelli copri.</span>
+    </div>
+    <div class="tools">
+      <input class="search" id="q" type="search" placeholder="Cerca un formato" aria-label="Cerca un formato">
+      <div class="chips" id="chips" role="group" aria-label="Famiglie di formati"></div>
+      <label class="toggle"><input type="checkbox" id="onlybest"> Solo le combinazioni consigliate</label>
+    </div>
+    <div class="legend"><span><i class="dot" style="display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--accent)"></i>Combinazione consigliata per quel formato</span><span>Ogni casella ha il suo prompt, anche quelle senza punto</span></div>
+    <div class="work">
+      <div class="mx" id="mx"><table><thead><tr id="thr"></tr></thead><tbody id="tb"></tbody></table><div class="empty" id="noresults" hidden>Nessun formato corrisponde alla ricerca.</div></div>
+      <aside class="panel" id="panel" aria-live="polite">
+        <div class="p-head">
+          <div class="p-top"><span class="p-lv" id="p-lv"></span><span class="p-best" id="p-best"></span><button type="button" class="close" id="p-close" aria-label="Chiudi">×</button></div>
+          <h3 class="p-title" id="p-title"></h3>
+          <p class="p-angle" id="p-angle"></p>
+        </div>
+        <div class="p-actions">
+          <button type="button" class="btn primary" id="b-copy">Copia il prompt</button>
+          <button type="button" class="btn" id="b-act" aria-pressed="false">Segna come attiva</button>
+        </div>
+        <div class="p-body"><pre id="p-pre"></pre></div>
+      </aside>
+    </div>
+  </section>
+
+  <footer><span><b>KEEP GROWING</b> · omarbragantini.com</span><span>Il formato decide come mostrarlo. Il livello decide cosa dire.</span></footer>
+</div>
+<div class="toast" id="toast" hidden>Copiato</div>
+
+<script>
+const D = {"levels": [{"n": 1, "short": "Inconsapevole", "name": "Inconsapevole", "who": "Non sa di avere il problema, o lo vive come una cosa normale.", "job": "Far riconoscere una situazione quotidiana o un sintomo. Prodotto e categoria restano fuori dai primi secondi.", "avoid": "Logo in apertura, nome del prodotto nell'hook, prezzo, offerta, termini tecnici.", "close": "Leggera. Porta a capire perché succede: una pagina che lo spiega, un contenuto, un quiz.", "example": "\"Dormi otto ore e ti svegli comunque stanca?\""}, {"n": 2, "short": "Problema", "name": "Consapevole del problema", "who": "Sa di avere il problema, ma non lo considera urgente o non sa da cosa dipende.", "job": "Dare un nome al problema, spiegare la causa vera e far sentire quanto costa lasciarlo com'è.", "avoid": "Elenchi di caratteristiche del prodotto, confronti con i concorrenti, offerte.", "close": "Porta a vedere che esiste un modo di risolverlo.", "example": "\"Il problema non sono le ore di sonno\""}, {"n": 3, "short": "Soluzione", "name": "Consapevole della soluzione", "who": "Sa che esiste una categoria di prodotti che lo risolve. Non sa perché scegliere il tuo.", "job": "Spiegare il meccanismo: perché questo approccio funziona dove gli altri falliscono.", "avoid": "Attacchi ai concorrenti senza prove, promesse generiche come \"il migliore\" o \"di qualità\".", "close": "Pagina prodotto, con un motivo preciso per guardarla.", "example": "\"Perché il magnesio, e perché questo\""}, {"n": 4, "short": "Prodotto", "name": "Consapevole del prodotto", "who": "Conosce te e i concorrenti. Deve scegliere.", "job": "Dare prove: recensioni vere, confronti, garanzie, la risposta all'obiezione principale.", "avoid": "Rispiegare il problema da zero, promesse senza una prova accanto.", "close": "Acquisto, con la rassicurazione che toglie il rischio.", "example": "Prova, confronto, autorità"}, {"n": 5, "short": "Pronta", "name": "Pronta all'acquisto", "who": "Ti conosce, ha già visitato il sito o messo nel carrello. Aspetta un motivo.", "job": "Dare il motivo per comprare adesso e togliere l'ultimo attrito: spedizione, resi, tempi, pagamento.", "avoid": "Rispiegare il prodotto, aperture lente.", "close": "Diretta: compra ora, con offerta, scadenza o vantaggio chiaro.", "example": "Offerta, scadenza, spedizione gratis"}], "fam": {"persone": "Persone che parlano", "prodotto": "Prodotto protagonista", "racconto": "Racconto", "dimostra": "Dimostrazione", "testo": "Testo e dati", "ritmo": "Ritmo e piattaforma"}, "formats": [{"n": 1, "name": "UGC", "fam": "persone", "desc": "Testimonial cliente raw con smartphone", "dur": "20-40 secondi", "prod": "Girato con lo smartphone in verticale, luce di casa, nessun set. Una persona sola che parla come parlerebbe a un'amica. Niente script letto: punti chiave e frasi del cliente, il resto improvvisato.", "best": [2, 4], "cells": [{"label": "La giornata storta", "angle": "Il creator racconta una situazione quotidiana in cui il problema si vede, senza chiamarlo problema. Il prodotto compare solo alla fine, come la cosa che ha cambiato quella scena."}, {"label": "Ho capito perché", "angle": "Il creator racconta il momento in cui ha capito da cosa dipendeva il suo problema. La causa detta con parole sue, il prodotto nell'ultima frase."}, {"label": "Ho provato di tutto", "angle": "Il creator elenca le soluzioni provate prima e perché non hanno funzionato. Poi spiega con parole semplici cosa fa di diverso il prodotto."}, {"label": "Recensione onesta", "angle": "Il creator dice cosa gli piace e cosa no, compresa l'obiezione principale e come l'ha superata. Un difetto ammesso rende credibile il resto."}, {"label": "Te lo dico prima che finisca", "angle": "Il creator ha il prodotto in mano e parla dell'offerta attiva e della scadenza, come lo direbbe a un'amica che stava per comprarlo."}]}, {"n": 2, "name": "POV", "fam": "racconto", "desc": "Camera in prima persona, prospettiva dell'utente", "dur": "15-30 secondi", "prod": "Camera all'altezza degli occhi, mani in campo, come se chi guarda fosse dentro la scena. Testo a schermo che inizia con \"POV:\" e descrive la situazione. Audio ambientale o audio in tendenza, voce facoltativa.", "best": [1, 5], "cells": [{"label": "POV: la solita mattina", "angle": "La scena in prima persona di un momento in cui il problema succede, mostrato come normalità. Il testo a schermo nomina la situazione, mai il problema."}, {"label": "POV: te ne accorgi", "angle": "La stessa scena, con il momento in cui chi guarda si accorge che non è normale. Il testo a schermo dà un nome al problema e alla sua causa."}, {"label": "POV: la prima volta", "angle": "Prima persona durante il primo utilizzo del prodotto. Il testo a schermo spiega in una riga perché funziona in modo diverso."}, {"label": "POV: hai scelto bene", "angle": "Prima persona che tiene in mano il prodotto accanto a quello che usava prima, oppure legge una recensione vera sullo schermo del telefono."}, {"label": "POV: ti arriva il pacco", "angle": "Prima persona che riceve il pacco o completa l'ordine. Il testo a schermo dice l'offerta e fino a quando vale."}]}, {"n": 3, "name": "Podcast Style", "fam": "persone", "desc": "Due persone che parlano, microfoni visibili", "dur": "30-60 secondi", "prod": "Due persone sedute, microfoni in campo, ripresa con due camere. Sembra una clip tagliata da una puntata più lunga: si entra a metà discorso. Sottotitoli grandi, parola per parola.", "best": [2, 3], "cells": [{"label": "La domanda che spiazza", "angle": "Uno fa una domanda su un'abitudine quotidiana e l'altro risponde con un'osservazione che fa riconoscere il problema a chi ascolta. Il prodotto non si nomina."}, {"label": "L'esperto spiega la causa", "angle": "Uno chiede perché succede il problema, l'altro spiega la causa vera con un esempio che chi guarda ha vissuto."}, {"label": "Perché questo funziona", "angle": "Discussione sul perché le soluzioni comuni falliscono e su cosa fa di diverso il meccanismo del prodotto. Tono da chiacchierata."}, {"label": "Ma vale quel prezzo?", "angle": "Uno fa ad alta voce l'obiezione principale, l'altro risponde con prove concrete: numeri, recensioni, garanzia."}, {"label": "Prima di chiudere la puntata", "angle": "Uno dei due parla dell'offerta attiva e del motivo per approfittarne adesso, come un consiglio tra amici."}]}, {"n": 4, "name": "Talking Head", "fam": "persone", "desc": "Persona che parla a camera, busto o volto", "dur": "20-45 secondi", "prod": "Una persona a mezzo busto, sguardo in camera, sfondo reale e ordinato. La prima frase arriva entro il primo secondo, senza saluti. Sottotitoli sempre attivi.", "best": [2, 3], "cells": [{"label": "Parla di me", "angle": "La persona descrive nella prima frase una situazione così precisa che chi guarda pensa \"parla di me\". Il resto spiega che quella situazione ha un nome."}, {"label": "Il vero motivo", "angle": "La persona smonta la spiegazione che tutti danno al problema e dice quella vera, con un esempio concreto."}, {"label": "Come funziona davvero", "angle": "La persona spiega il meccanismo come lo spiegherebbe a un cliente in negozio, con un oggetto o un gesto che lo rende visibile."}, {"label": "Le domande che mi fanno", "angle": "La persona risponde alle obiezioni più frequenti, una dopo l'altra, con prove e garanzie."}, {"label": "Quello che ti blocca", "angle": "La persona risponde all'ultimo dubbio prima dell'acquisto (spedizione, resi, tempi) e chiude con l'offerta."}]}, {"n": 5, "name": "No Voiceover (Silent)", "fam": "testo", "desc": "Solo immagini, testo a schermo e musica", "dur": "10-20 secondi", "prod": "Nessuna voce. Deve funzionare con l'audio spento: ogni messaggio sta nel testo a schermo, al massimo 6-8 parole per schermata.", "best": [1, 5], "cells": [{"label": "Lo riconosci?", "angle": "Immagini di una situazione quotidiana con il problema dentro. Il testo a schermo descrive cosa prova chi la vive, senza nominare il prodotto."}, {"label": "Ecco perché succede", "angle": "Immagine del problema, poi il testo con la causa in una riga, poi cosa succede se resta così."}, {"label": "Il metodo in immagini", "angle": "Il meccanismo del prodotto mostrato per immagini, un passaggio per schermata, con il testo che spiega cosa succede in ognuno."}, {"label": "Le prove in fila", "angle": "Recensioni, numeri e garanzia uno dopo l'altro sopra le immagini del prodotto."}, {"label": "Offerta in 10 secondi", "angle": "Prodotto, offerta, scadenza, invito all'acquisto. Quattro schermate e basta."}]}, {"n": 6, "name": "ASMR", "fam": "prodotto", "desc": "Suoni del materiale, movimenti lenti, niente voce né musica", "dur": "15-30 secondi", "prod": "Audio registrato da vicino, suoni del materiale e dei gesti in primo piano. Movimenti lenti, luce morbida, sfondo neutro. Niente musica, niente voce.", "best": [3, 4], "cells": [{"label": "Il suono del momento", "angle": "I suoni di un gesto quotidiano legato al problema, rallentati. Il testo a schermo, se c'è, nomina la sensazione e non il prodotto."}, {"label": "Il suono del problema", "angle": "Prima il rumore o il gesto che rappresenta il problema, poi silenzio. Una riga di testo dice la causa."}, {"label": "Senti com'è fatto", "angle": "Il prodotto maneggiato da vicino: apertura, texture, consistenza. Il suono racconta il materiale, il testo dice perché è fatto così."}, {"label": "La qualità si sente", "angle": "Il prodotto e un'alternativa comune senza marchio, uno dopo l'altro. Chi guarda sente la differenza prima di leggerla."}, {"label": "Il rituale", "angle": "Il gesto completo di utilizzo, dall'apertura alla fine, chiuso dall'offerta a schermo."}]}, {"n": 7, "name": "Timelapse/Hyperlapse", "fam": "racconto", "desc": "Processo velocizzato: costruzione, giornata, cambiamento", "dur": "15-30 secondi", "prod": "Una ripresa lunga velocizzata, camera fissa o in movimento lento. Il tempo che passa è il messaggio. Testo a schermo con il tempo reale trascorso.", "best": [2, 3], "cells": [{"label": "Una giornata qualunque", "angle": "Timelapse di una giornata in cui il problema torna più volte, senza commento. Il testo a schermo conta quante volte succede."}, {"label": "Quanto ci perdi", "angle": "Il tempo o la fatica che il problema costa, velocizzati. Il testo a schermo dà il totale in ore, euro o giorni."}, {"label": "Il processo dietro", "angle": "Come viene fatto il prodotto o come agisce, velocizzato. Il testo a schermo spiega i passaggi del meccanismo."}, {"label": "Dopo 30 giorni", "angle": "Stesso punto, stessa luce, giorni diversi. Il risultato nel tempo, con i giorni segnati a schermo. Solo se il risultato è documentato."}, {"label": "Le ultime ore", "angle": "Un orologio o un countdown velocizzato sopra il prodotto, mentre l'offerta va verso la scadenza."}]}, {"n": 8, "name": "Stop Motion", "fam": "prodotto", "desc": "Animazione fotogramma per fotogramma del prodotto", "dur": "10-20 secondi", "prod": "8-12 foto al secondo, il prodotto e gli oggetti si muovono da soli su un piano. Musica ritmata, un suono sincronizzato a ogni scatto.", "best": [1, 3], "cells": [{"label": "Gli oggetti del problema", "angle": "Gli oggetti di una situazione quotidiana si muovono e mettono in scena il problema senza persone. Il prodotto non c'è ancora."}, {"label": "Il problema si smonta", "angle": "Gli oggetti mostrano la causa del problema pezzo per pezzo, come uno schema che prende vita."}, {"label": "Ecco cosa c'è dentro", "angle": "Il prodotto si apre da solo e mostra componenti o ingredienti, con il testo che dice a cosa serve ognuno."}, {"label": "Fianco a fianco", "angle": "Il prodotto e un'alternativa generica si confrontano in movimento. Le differenze compaiono una alla volta."}, {"label": "Il pacco si prepara", "angle": "L'ordine si compone da solo nella scatola, l'offerta compare come un'etichetta."}]}, {"n": 9, "name": "Before/After", "fam": "dimostra", "desc": "Confronto split screen o in sequenza", "dur": "10-25 secondi", "prod": "Stessa inquadratura, stessa luce, stessa persona o stesso spazio, prima e dopo. Split screen o stacco netto. Solo risultati reali e documentati.", "best": [2, 4], "cells": [{"label": "Il prima che sembra normale", "angle": "Solo il prima, presentato come normalità, poi uno stacco sul dopo senza spiegazioni. La curiosità porta a guardare il resto."}, {"label": "La differenza ha una causa", "angle": "Prima e dopo, con il testo che spiega cosa causava il prima. Il prodotto resta sullo sfondo."}, {"label": "Cosa è cambiato in mezzo", "angle": "Prima, poi il meccanismo in una schermata, poi dopo. Il centro del video è il come."}, {"label": "Clienti veri", "angle": "Prima e dopo di clienti diversi, con nome e tempo trascorso. Solo materiale vero e autorizzato."}, {"label": "Il tuo dopo", "angle": "Prima e dopo rapidi, poi l'offerta e la scadenza."}]}, {"n": 10, "name": "Tutorial/How-to", "fam": "dimostra", "desc": "Istruzioni passo passo: come scegliere, usare, curare", "dur": "30-60 secondi", "prod": "Passaggi numerati a schermo, mani e prodotto in primo piano, un passaggio per stacco. Chi guarda deve poterlo rifare dopo averlo visto una volta.", "best": [2, 3], "cells": [{"label": "Lo stai facendo male", "angle": "Tutorial su un gesto quotidiano che quasi tutti fanno male. Il problema emerge mentre si spiega, il prodotto non è al centro."}, {"label": "Come capire se ce l'hai", "angle": "Un test semplice da fare a casa per riconoscere il problema e la sua causa."}, {"label": "Come si usa perché funzioni", "angle": "Il modo giusto di usare il prodotto, passo per passo, con il perché di ogni passaggio."}, {"label": "Come scegliere", "angle": "Cosa guardare prima di comprare un prodotto della categoria. I criteri sono quelli in cui il tuo prodotto vince, detti senza nominarlo fino alla fine."}, {"label": "Come ordinarlo in 30 secondi", "angle": "Il percorso d'acquisto mostrato a schermo, con l'offerta attiva e il modo in cui si applica."}]}, {"n": 11, "name": "Behind The Scenes (BTS)", "fam": "racconto", "desc": "Dietro le quinte del laboratorio o del processo", "dur": "20-45 secondi", "prod": "Riprese vere del laboratorio, del magazzino, di chi lavora. Nessun set costruito. Le persone del team in campo, con il loro nome.", "best": [3, 4], "cells": [{"label": "Quello che non sai", "angle": "Dietro le quinte di come funziona il settore, con una cosa che chi guarda non sapeva e che lo riguarda."}, {"label": "Cosa ci scrivono i clienti", "angle": "Il team legge le richieste che arrivano all'assistenza e mostra il problema che ritorna più spesso."}, {"label": "Come lo facciamo", "angle": "Il processo di produzione o di selezione che rende il prodotto diverso, un passaggio alla volta."}, {"label": "Il controllo che nessuno vede", "angle": "Il controllo qualità o un test interno ripreso dal vivo. Si vede cosa viene scartato e perché."}, {"label": "Stiamo preparando gli ordini", "angle": "Il magazzino che prepara gli ordini dell'offerta in corso, con quanti pezzi restano."}]}, {"n": 12, "name": "Founder Story", "fam": "persone", "desc": "Il titolare o l'artigiano racconta il brand", "dur": "30-60 secondi", "prod": "Il titolare parla in camera dove lavora. Racconto in prima persona, con date e dettagli veri. Niente tono istituzionale.", "best": [1, 3], "cells": [{"label": "È successo a me", "angle": "Il founder racconta quando ha vissuto lui il problema senza sapere cosa fosse. Chi guarda si riconosce nella sua storia."}, {"label": "Quello che ho scoperto", "angle": "Il founder racconta cosa ha capito sulla causa del problema e perché nessuno ne parlava."}, {"label": "Perché l'ho fatto diverso", "angle": "Il founder spiega la scelta che rende il prodotto diverso e quanto gli è costata."}, {"label": "Ci metto la faccia", "angle": "Il founder parla della garanzia e dei numeri veri dell'azienda: clienti, resi, recensioni."}, {"label": "Ve lo dico io", "angle": "Il founder annuncia l'offerta in prima persona e spiega perché la fa adesso."}]}, {"n": 13, "name": "Day in the Life", "fam": "racconto", "desc": "Si segue una persona o il prodotto durante la giornata", "dur": "20-40 secondi", "prod": "Una giornata reale, pochi secondi per momento, orari a schermo. Il prodotto compare solo nei momenti in cui serve davvero.", "best": [1, 2], "cells": [{"label": "Una giornata come tante", "angle": "La giornata di una persona simile al cliente ideale, con il problema che compare in più momenti senza essere nominato."}, {"label": "Quante volte in un giorno", "angle": "La stessa giornata, con il problema segnato a ogni comparsa e una riga finale sulla causa."}, {"label": "La giornata con il prodotto", "angle": "Il prodotto entra nei momenti chiave della giornata. Il testo spiega cosa fa in ognuno."}, {"label": "Un mese dopo", "angle": "La giornata di un cliente che lo usa da tempo, con il risultato che si vede e le sue parole."}, {"label": "Da domani", "angle": "Giornata in versione rapida, poi offerta e data di consegna."}]}, {"n": 14, "name": "Unboxing", "fam": "prodotto", "desc": "Apertura del pacco, prima impressione", "dur": "20-40 secondi", "prod": "Mani e pacco in primo piano, apertura reale senza tagli finti, prima reazione vera. Si vede tutto quello che c'è nella scatola.", "best": [4, 5], "cells": [{"label": "Cosa c'è in questo pacco?", "angle": "Durante l'apertura il contenuto viene collegato a un problema quotidiano, prima di dire cos'è il prodotto."}, {"label": "Finalmente", "angle": "Chi apre racconta il problema che aveva e perché ha ordinato proprio adesso."}, {"label": "A cosa serve ogni cosa", "angle": "Ogni elemento nella scatola mostrato e spiegato, con il motivo per cui è lì."}, {"label": "Prima impressione onesta", "angle": "Commento sincero su qualità, confezione e aspettative. L'obiezione principale viene verificata dal vivo."}, {"label": "Cosa ricevi con l'offerta", "angle": "Apertura del pacchetto in offerta, con il valore di ogni elemento e la scadenza."}]}, {"n": 15, "name": "Product Showcase", "fam": "prodotto", "desc": "Solo prodotto: rotazioni, dettagli, nessuna persona", "dur": "10-20 secondi", "prod": "Solo prodotto. Rotazioni, dettagli, luce controllata. Testo a schermo breve, una caratteristica per inquadratura.", "best": [4, 5], "cells": [{"label": "L'oggetto misterioso", "angle": "Il prodotto mostrato in modo che non si capisca subito cos'è, poi rivelato insieme alla situazione in cui serve."}, {"label": "Fatto per questo", "angle": "Ogni inquadratura collega un dettaglio del prodotto al problema che risolve."}, {"label": "Ogni dettaglio ha un motivo", "angle": "Rotazione con richiami a schermo sulle caratteristiche che spiegano il meccanismo."}, {"label": "Guarda da vicino", "angle": "Dettagli di qualità che i concorrenti non hanno, con misure e materiali reali."}, {"label": "Il prodotto e il prezzo", "angle": "Showcase rapido con prezzo, offerta e scadenza a schermo."}]}, {"n": 16, "name": "Lifestyle", "fam": "racconto", "desc": "Il prodotto dentro i momenti della vita quotidiana", "dur": "15-30 secondi", "prod": "Momenti di vita reale del cliente ideale, luce naturale, persone che non posano. Il prodotto si usa, non si mostra.", "best": [1, 4], "cells": [{"label": "Il momento in cui manca", "angle": "Una scena di vita in cui si sente la mancanza di qualcosa, senza dire cosa. Il prodotto entra solo alla fine."}, {"label": "Così non doveva andare", "angle": "Una scena di vita rovinata dal problema, poi una riga che ne dice la causa."}, {"label": "Com'è con il prodotto", "angle": "La stessa scena con il prodotto dentro. Il testo spiega cosa cambia e perché."}, {"label": "Persone come te", "angle": "Momenti di clienti diversi che usano il prodotto, ognuno con una frase presa dalle recensioni vere."}, {"label": "Il momento giusto", "angle": "Una scena legata a un'occasione vicina, con l'offerta e la data di consegna."}]}, {"n": 17, "name": "Cinematic", "fam": "racconto", "desc": "Riprese professionali, color grading, racconto da film", "dur": "20-45 secondi", "prod": "Movimenti di camera lenti, color grading, musica d'atmosfera. Una piccola storia con inizio, tensione e fine. Funziona solo se la storia regge anche senza effetti.", "best": [1, 3], "cells": [{"label": "Una storia che ti somiglia", "angle": "Mini film su un personaggio che vive il problema senza saperlo. Il finale lascia una domanda aperta."}, {"label": "Il momento in cui capisce", "angle": "Il personaggio si accorge del problema e capisce da dove viene. Il prodotto è solo un dettaglio nell'ultima scena."}, {"label": "La scelta", "angle": "Il personaggio prova la soluzione e il film mostra il meccanismo come parte della trama."}, {"label": "Il risultato", "angle": "Il personaggio dopo, con un dato vero o una recensione che chiude il film."}, {"label": "L'ultima scena", "angle": "Il finale del film con l'offerta e la scadenza."}]}, {"n": 18, "name": "Fast Cut/Montage", "fam": "ritmo", "desc": "Tagli rapidi, ritmo sostenuto", "dur": "10-20 secondi", "prod": "Uno stacco ogni 0,5-1,5 secondi, musica con battuta forte, ogni stacco sul tempo. Testo a schermo di poche parole. Ritmo alto dall'inizio alla fine.", "best": [1, 5], "cells": [{"label": "Tutte le volte che", "angle": "Montaggio rapido di tante situazioni quotidiane diverse con lo stesso problema dentro."}, {"label": "Le cause in sequenza", "angle": "Le abitudini che causano il problema, una per stacco, con una scritta sopra ognuna."}, {"label": "Il prodotto in azione", "angle": "Il prodotto usato in contesti diversi, con le caratteristiche chiave a schermo."}, {"label": "Recensioni a raffica", "angle": "Recensioni vere e risultati di clienti, a ritmo di musica."}, {"label": "Ultimi giorni", "angle": "Il prodotto con l'offerta ripetuta e il countdown."}]}, {"n": 19, "name": "Text-heavy", "fam": "testo", "desc": "Il copy è protagonista, il visual è secondario", "dur": "Statico o 10-20 secondi", "prod": "Sfondo semplice, una foto o un colore. Frasi brevi, leggibili in 3 secondi a schermata. Funziona anche come immagine statica.", "best": [2, 3], "cells": [{"label": "La frase che lo descrive", "angle": "Una frase presa dalle parole dei clienti che descrive il problema senza nominarlo, su sfondo pulito."}, {"label": "Perché ti succede", "angle": "Il problema e la sua causa in due righe, poi quanto costa lasciarlo così."}, {"label": "Perché funziona", "angle": "Il meccanismo in tre o quattro frasi brevi, una per schermata."}, {"label": "Cosa dicono i clienti", "angle": "Recensioni vere in grande, con nome e dettaglio, su sfondo neutro."}, {"label": "L'offerta in chiaro", "angle": "Offerta, prezzo, scadenza e condizioni scritti senza giri di parole."}]}, {"n": 20, "name": "Meme/Trend", "fam": "ritmo", "desc": "Sfrutta un audio o un format social del momento", "dur": "7-15 secondi", "prod": "Un audio o un format in tendenza sulla piattaforma questa settimana. Il trend fa da contenitore, il messaggio resta il tuo. Va pubblicato finché il trend è vivo.", "best": [1, 2], "cells": [{"label": "Quando ti succede", "angle": "Il meme di una situazione quotidiana con il problema dentro, raccontata con ironia. Il brand solo in fondo."}, {"label": "Io prima di capirlo", "angle": "Il trend del prima e dopo applicato al momento in cui si capisce la causa del problema."}, {"label": "Io che lo spiego a tutti", "angle": "Il trend usato per spiegare con ironia perché la soluzione funziona."}, {"label": "Gli altri e noi", "angle": "Il trend del confronto tra la scelta comune e il prodotto, senza nominare marchi."}, {"label": "Io che aspettavo l'offerta", "angle": "Il trend della reazione, usato per l'offerta, con la scadenza a schermo."}]}, {"n": 21, "name": "Street Interview", "fam": "persone", "desc": "Persone fermate per strada, opinioni spontanee", "dur": "20-45 secondi", "prod": "Persone vere, microfono in mano visibile, domande brevi, risposte spontanee. Si montano le risposte più sincere, anche quelle contro.", "best": [1, 2], "cells": [{"label": "Lo fai anche tu?", "angle": "Domande su un'abitudine quotidiana che fanno emergere il problema dalle risposte delle persone."}, {"label": "Sai perché succede?", "angle": "Le persone provano a spiegare la causa del problema e quasi nessuno la sa. Alla fine arriva la spiegazione vera."}, {"label": "Prova questo", "angle": "Le persone provano il prodotto sul posto e dicono cosa notano."}, {"label": "Quale sceglieresti?", "angle": "Prova alla cieca tra il prodotto e un'alternativa, con le scelte e i motivi."}, {"label": "Quanto lo pagheresti?", "angle": "Le persone stimano il prezzo, poi scoprono quello vero e l'offerta."}]}, {"n": 22, "name": "Comparison", "fam": "dimostra", "desc": "Prodotto contro concorrente, diretto o implicito", "dur": "15-30 secondi", "prod": "Due colonne o due metà dello schermo, un criterio alla volta. Confronti veri e verificabili, meglio contro \"la scelta comune\" che contro un marchio.", "best": [3, 4], "cells": [{"label": "Due modi di fare la stessa cosa", "angle": "Confronto tra l'abitudine comune e quella che evita il problema. Il prodotto non c'è."}, {"label": "Quello che pensi e quello che succede", "angle": "Confronto tra la causa che tutti credono e quella vera."}, {"label": "Le soluzioni a confronto", "angle": "Le categorie di soluzioni una accanto all'altra, con il motivo per cui il meccanismo del prodotto vince."}, {"label": "Noi e la scelta comune", "angle": "Confronto punto per punto: costo per utilizzo, qualità, garanzia."}, {"label": "Prezzo pieno e prezzo di oggi", "angle": "Il prezzo normale accanto all'offerta, con quanto si risparmia e fino a quando."}]}, {"n": 23, "name": "Problem-Solution", "fam": "dimostra", "desc": "Mostra il problema, poi introduce la soluzione", "dur": "15-30 secondi", "prod": "Due tempi: il problema mostrato in modo che si senta, poi la soluzione in azione. Il passaggio tra i due è netto.", "best": [2, 3], "cells": [{"label": "Il problema senza nome", "angle": "Prima metà sul problema vissuto come normale, seconda metà che mostra che non deve andare così."}, {"label": "Il problema e la sua causa", "angle": "Il problema, la causa vera, poi la soluzione presentata come categoria."}, {"label": "La soluzione che funziona", "angle": "Il problema in pochi secondi, poi il prodotto e il suo meccanismo."}, {"label": "Risolto, con le prove", "angle": "Problema, soluzione, poi i numeri o le recensioni che lo confermano."}, {"label": "Risolvilo oggi", "angle": "Il problema in 2 secondi, la soluzione, l'offerta con la scadenza."}]}, {"n": 24, "name": "Green Screen", "fam": "persone", "desc": "Persona davanti a uno sfondo grafico che cambia", "dur": "15-30 secondi", "prod": "La persona davanti a uno sfondo che cambia: screenshot, articoli, recensioni, grafici. Lo sfondo è la prova, la persona lo commenta.", "best": [2, 4], "cells": [{"label": "Hai visto questo?", "angle": "Sullo sfondo un post o un articolo su un fenomeno quotidiano. La persona lo commenta e fa riconoscere il problema."}, {"label": "Il dato che spiega tutto", "angle": "Sullo sfondo un dato con la sua fonte che mostra la causa del problema. La persona lo spiega."}, {"label": "Ecco come funziona", "angle": "Sullo sfondo uno schema del meccanismo. La persona lo spiega passo per passo."}, {"label": "Leggiamo le recensioni", "angle": "Sullo sfondo recensioni vere, anche negative. La persona risponde a ognuna."}, {"label": "La pagina dell'offerta", "angle": "Sullo sfondo la pagina con l'offerta. La persona indica cosa c'è e fino a quando vale."}]}, {"n": 25, "name": "Slideshow Statico", "fam": "testo", "desc": "Serie di immagini con transizioni", "dur": "5-8 immagini", "prod": "Immagini statiche con transizioni semplici, oppure carosello. Un'idea per immagine. La prima deve reggere da sola, perché molti vedono solo quella.", "best": [2, 4], "cells": [{"label": "I segnali", "angle": "Un'immagine per ogni segnale quotidiano del problema, senza nominarlo fino all'ultima."}, {"label": "Da dove viene", "angle": "Il percorso dalla causa al problema, un'immagine per passaggio."}, {"label": "Perché questo", "angle": "Un'immagine per ogni motivo per cui il meccanismo funziona."}, {"label": "Le prove", "angle": "Una recensione, un dato o una garanzia per immagine."}, {"label": "Cosa ottieni oggi", "angle": "Un'immagine per ogni elemento dell'offerta, l'ultima con la scadenza."}]}, {"n": 26, "name": "Cinemagraph", "fam": "prodotto", "desc": "Immagine ferma con un solo elemento in movimento", "dur": "Loop di 3-6 secondi", "prod": "Tutto fermo tranne un elemento, in loop perfetto. Il movimento porta l'occhio sul punto del messaggio. Testo minimo.", "best": [1, 5], "cells": [{"label": "L'unica cosa che si muove", "angle": "Una scena quotidiana ferma in cui si muove solo il dettaglio che rappresenta il problema."}, {"label": "Il dettaglio che tradisce", "angle": "L'elemento in movimento è il segno del problema, il testo dice la causa."}, {"label": "Il prodotto che agisce", "angle": "Tutto fermo tranne il prodotto in azione, con una riga sul meccanismo."}, {"label": "La qualità in movimento", "angle": "Il movimento mostra il dettaglio di qualità che distingue il prodotto."}, {"label": "L'offerta che scorre", "angle": "Il prodotto fermo e l'offerta in movimento, con la scadenza."}]}, {"n": 27, "name": "Testimonial Montage", "fam": "persone", "desc": "Più clienti, frasi brevi in sequenza", "dur": "20-40 secondi", "prod": "Clienti veri, una frase ciascuno, montati uno dopo l'altro. Ognuno con nome e un dettaglio. Solo testimonianze reali e autorizzate.", "best": [4, 5], "cells": [{"label": "Anche a me succedeva", "angle": "Clienti diversi che descrivono come vivevano prima, senza parlare del prodotto."}, {"label": "Non sapevo che fosse quello", "angle": "Clienti che raccontano quando hanno capito la causa del loro problema."}, {"label": "Avevo provato altro", "angle": "Clienti che raccontano cosa avevano provato prima e perché questo ha funzionato."}, {"label": "Il risultato in una frase", "angle": "Clienti che dicono il loro risultato in una frase, con tempi e dettagli."}, {"label": "Perché l'ho ricomprato", "angle": "Clienti che spiegano perché l'hanno riordinato. In chiusura l'offerta."}]}, {"n": 28, "name": "Stats/Data Visualization", "fam": "testo", "desc": "Numeri, grafici, infografiche animate", "dur": "15-30 secondi", "prod": "Numeri e grafici animati, uno alla volta. Ogni numero ha una fonte oppure viene dai tuoi dati. Il grafico si legge in 2 secondi.", "best": [2, 4], "cells": [{"label": "Il numero che sorprende", "angle": "Un dato sul fenomeno quotidiano che fa dire \"anche io\", con la fonte a schermo."}, {"label": "Quanto ti costa", "angle": "Il problema tradotto in numeri: tempo, soldi, frequenza. Fonte a schermo."}, {"label": "Perché funziona, in numeri", "angle": "Il meccanismo mostrato con dati: test, ingredienti, misure."}, {"label": "I nostri numeri", "angle": "Clienti, voto medio, tasso di riacquisto, resi. Solo numeri veri."}, {"label": "Quanto risparmi oggi", "angle": "Prezzo, offerta e risparmio in un grafico semplice."}]}, {"n": 29, "name": "Hands Only", "fam": "prodotto", "desc": "Solo mani che interagiscono con il prodotto", "dur": "15-30 secondi", "prod": "Si vedono solo le mani, nessun volto. Inquadratura dall'alto o frontale, piano di lavoro pulito. I gesti raccontano tutto.", "best": [3, 4], "cells": [{"label": "Il gesto di tutti i giorni", "angle": "Le mani fanno un gesto quotidiano in cui si vede il problema."}, {"label": "Il gesto sbagliato", "angle": "Le mani mostrano il gesto che causa il problema, il testo spiega perché."}, {"label": "Come si usa", "angle": "Le mani usano il prodotto passo per passo, ogni gesto spiegato."}, {"label": "Toccalo con mano", "angle": "Le mani mostrano materiali, finiture e dettagli che provano la qualità."}, {"label": "Le mani che impacchettano", "angle": "Le mani preparano l'ordine, con offerta e scadenza a schermo."}]}, {"n": 30, "name": "Macro/Close-up", "fam": "prodotto", "desc": "Dettagli estremi, texture, materiali", "dur": "10-20 secondi", "prod": "Obiettivo macro o telefono vicinissimo. Texture, gocce, fibre, superfici. Luce radente per far vedere il materiale.", "best": [3, 4], "cells": [{"label": "Da vicino cambia tutto", "angle": "Il dettaglio estremo di una cosa quotidiana che mostra un problema invisibile a occhio nudo."}, {"label": "Ecco cosa succede davvero", "angle": "Il macro mostra la causa del problema a livello di materiale o superficie."}, {"label": "La texture che fa la differenza", "angle": "Il macro del prodotto mostra la caratteristica che spiega il meccanismo."}, {"label": "Confronto da vicino", "angle": "Il macro del prodotto accanto a un'alternativa comune, con la stessa luce."}, {"label": "L'ultimo dettaglio", "angle": "Macro del prodotto che si chiude sull'offerta."}]}, {"n": 31, "name": "Reaction Video", "fam": "persone", "desc": "Una persona reagisce a prodotto, dato o recensione", "dur": "15-30 secondi", "prod": "Una persona reagisce dal vivo, inquadrata insieme a quello a cui reagisce (schermo diviso o riquadro). Reazione vera, mai recitata.", "best": [2, 4], "cells": [{"label": "Reagisce a un dato", "angle": "La persona reagisce a un dato o a un video sul fenomeno quotidiano e si accorge che la riguarda."}, {"label": "Reagisce alla causa", "angle": "La persona scopre la causa vera del problema e reagisce."}, {"label": "Reagisce al primo utilizzo", "angle": "La persona prova il prodotto per la prima volta e dice cosa nota."}, {"label": "Reagisce alle recensioni", "angle": "La persona legge recensioni vere, anche negative, e le commenta."}, {"label": "Reagisce al prezzo", "angle": "La persona scopre il prezzo dell'offerta e reagisce."}]}, {"n": 32, "name": "Challenge/Test", "fam": "dimostra", "desc": "Il prodotto messo alla prova davanti alla camera", "dur": "15-40 secondi", "prod": "Una prova dal vivo, con regole chiare all'inizio e risultato visibile alla fine. Niente trucchi: se il prodotto non passa la prova, quella prova non si usa.", "best": [3, 4], "cells": [{"label": "Prova anche tu", "angle": "Una sfida su un'abitudine quotidiana che fa emergere il problema in chi la prova."}, {"label": "Il test che lo svela", "angle": "Un test semplice che mostra dal vivo la causa del problema."}, {"label": "Lo mettiamo alla prova", "angle": "Il prodotto in un test che dimostra il meccanismo."}, {"label": "Contro la scelta comune", "angle": "Il prodotto e un'alternativa nella stessa prova, con il risultato misurato."}, {"label": "Provalo senza rischio", "angle": "L'invito a fare la prova a casa, con garanzia, offerta e scadenza."}]}, {"n": 33, "name": "Animated Text", "fam": "testo", "desc": "Kinetic typography, il testo animato è protagonista", "dur": "10-20 secondi", "prod": "Il testo si muove a ritmo di voce o musica: parole che entrano, crescono, cambiano colore. Una parola chiave evidenziata per frase.", "best": [1, 2], "cells": [{"label": "Le parole che pensi", "angle": "Frasi prese dai clienti che descrivono la situazione quotidiana, animate parola per parola."}, {"label": "La causa in una frase", "angle": "Il problema e la sua causa animati, con la parola chiave che riempie lo schermo."}, {"label": "Il meccanismo in parole", "angle": "Il meccanismo spiegato in frasi brevi animate."}, {"label": "Le recensioni che si muovono", "angle": "Recensioni vere animate in sequenza, con nome e stelle."}, {"label": "L'offerta che scade", "angle": "Offerta e scadenza animate, con il countdown."}]}, {"n": 34, "name": "Split Screen Multi-angle", "fam": "dimostra", "desc": "Più prospettive nello stesso momento", "dur": "15-30 secondi", "prod": "Lo schermo diviso in due o più riquadri, lo stesso momento da punti di vista diversi. Ogni riquadro aggiunge un'informazione.", "best": [3, 4], "cells": [{"label": "Stessa giornata, due persone", "angle": "Due persone nello stesso momento: una vive il problema, l'altra no. Nessuna spiegazione."}, {"label": "Quello che vedi e quello che succede", "angle": "Un riquadro mostra la situazione, l'altro cosa succede dietro, cioè la causa."}, {"label": "Il prodotto da ogni lato", "angle": "Riquadri con il prodotto da angolazioni diverse, ognuno con una caratteristica del meccanismo."}, {"label": "Noi e loro, insieme", "angle": "Il prodotto e l'alternativa nello stesso test, in parallelo."}, {"label": "Dal carrello alla porta", "angle": "Un riquadro con il carrello, l'altro con il pacco che arriva, offerta a schermo."}]}, {"n": 35, "name": "Screen Recording", "fam": "dimostra", "desc": "Registrazione dello schermo: sito, recensioni, social", "dur": "15-40 secondi", "prod": "Lo schermo del telefono o del computer registrato dal vivo: ricerche, recensioni, chat, sito. Si vede il dito o il cursore. Voce o testo che guida.", "best": [4, 5], "cells": [{"label": "Le ricerche che fai", "angle": "Ricerche su Google o commenti social che mostrano quante persone vivono il problema."}, {"label": "Cosa trovi se cerchi", "angle": "Navigazione tra fonti che spiegano la causa del problema."}, {"label": "Dentro la scheda prodotto", "angle": "Navigazione sul sito che mostra il meccanismo o la scheda tecnica."}, {"label": "Recensioni vere, scorrendo", "angle": "Le recensioni reali sul sito, su Amazon o su Trustpilot, fatte scorrere senza tagli."}, {"label": "Il carrello con lo sconto", "angle": "Il percorso d'acquisto con l'offerta applicata, dal carrello alla conferma."}]}, {"n": 36, "name": "Voiceover Narrative", "fam": "persone", "desc": "Voce fuori campo che racconta, le immagini la seguono", "dur": "20-45 secondi", "prod": "Una voce fuori campo racconta e le immagini la seguono. Il testo della voce è il cuore del video: scritto per essere detto, a frasi brevi.", "best": [1, 2], "cells": [{"label": "La storia di qualcuno", "angle": "La voce racconta la giornata di una persona che vive il problema senza saperlo."}, {"label": "Perché succede", "angle": "La voce spiega la causa del problema mentre le immagini la mostrano."}, {"label": "Come l'abbiamo risolto", "angle": "La voce racconta il meccanismo del prodotto come una scoperta."}, {"label": "Cosa dicono", "angle": "La voce legge recensioni vere sopra le immagini dei clienti."}, {"label": "Fino a domenica", "angle": "La voce chiude sull'offerta e sulla scadenza."}]}, {"n": 37, "name": "Native Platform Style", "fam": "ritmo", "desc": "Imita il look organico del feed, non sembra un annuncio", "dur": "10-30 secondi", "prod": "Deve sembrare un post organico: niente logo, niente grafica da pubblicità, font e strumenti della piattaforma. Chi guarda non deve capire subito che è un annuncio.", "best": [1, 2], "cells": [{"label": "Un post qualunque", "angle": "Un contenuto che sembra un post personale su una situazione quotidiana con il problema dentro."}, {"label": "Il consiglio", "angle": "Un formato tipico della piattaforma che spiega la causa del problema come un consiglio tra utenti."}, {"label": "Ho trovato questo", "angle": "Un post di chi ha scoperto la soluzione e racconta perché funziona."}, {"label": "Storia con sondaggio", "angle": "Formato storia con recensioni e un sondaggio sulla scelta tra due prodotti."}, {"label": "Codice per chi mi segue", "angle": "Un post organico che condivide un codice sconto con scadenza."}]}, {"n": 38, "name": "3D Animation", "fam": "prodotto", "desc": "Grafica 3D del prodotto", "dur": "10-25 secondi", "prod": "Il prodotto ricostruito in 3D: esploso, rotazioni impossibili, interni visibili. Serve quando il meccanismo non si può filmare.", "best": [3, 4], "cells": [{"label": "Dentro la situazione", "angle": "Animazione che mostra cosa succede dentro una situazione quotidiana, senza il prodotto."}, {"label": "La causa vista da dentro", "angle": "Animazione della causa del problema."}, {"label": "Il meccanismo in 3D", "angle": "Il prodotto esploso che mostra come agisce, un passaggio alla volta."}, {"label": "Tutti i dettagli", "angle": "Rotazione con misure, materiali e componenti a confronto."}, {"label": "Si ricompone", "angle": "Il prodotto che si ricompone insieme all'offerta."}]}, {"n": 39, "name": "Documentary Style", "fam": "racconto", "desc": "Inchiesta o reportage sul brand o sul prodotto", "dur": "45-90 secondi", "prod": "Tono da inchiesta: interviste, materiale d'archivio, dati, voce narrante sobria. Una domanda all'inizio, la risposta alla fine.", "best": [2, 3], "cells": [{"label": "Un'abitudine di tutti", "angle": "Inchiesta su un'abitudine diffusa che fa emergere il problema."}, {"label": "Perché nessuno ne parla", "angle": "Inchiesta sulla causa del problema e sul motivo per cui il mercato la ignora."}, {"label": "Come nasce la soluzione", "angle": "Come è stato sviluppato il prodotto e perché funziona."}, {"label": "Abbiamo verificato", "angle": "Inchiesta sui risultati: clienti, test, numeri."}, {"label": "L'ultimo capitolo", "angle": "Chiusura da documentario con l'offerta e la data in cui scade."}]}, {"n": 40, "name": "Stop-Scroll Pattern Interrupt", "fam": "ritmo", "desc": "Un visual inatteso che ferma lo scroll", "dur": "5-15 secondi", "prod": "Il primo secondo mostra qualcosa che non torna: un oggetto fuori posto, un movimento strano, un'immagine che spiazza. Subito dopo, il messaggio.", "best": [1, 5], "cells": [{"label": "L'immagine che non torna", "angle": "Un visual strano legato alla situazione quotidiana, poi il problema rivelato."}, {"label": "L'errore ingigantito", "angle": "Il gesto sbagliato esagerato in modo inatteso, poi la causa."}, {"label": "Dove non te l'aspetti", "angle": "Il prodotto in un contesto assurdo che dimostra il meccanismo."}, {"label": "La prova estrema", "angle": "Un test visivo inatteso che dimostra la qualità."}, {"label": "L'offerta che interrompe", "angle": "Un visual che spiazza, seguito dall'offerta e dalla scadenza."}]}]};
+const EX = {prodotto:"Integratore di magnesio in bustine da sciogliere in acqua, una la sera",prezzo:"29 € per 30 giorni",cliente:"Donne tra 30 e 45 anni, lavorano molto, dormono abbastanza ma si svegliano stanche",problema:"Dormo otto ore e mi sveglio comunque stanca",risultato:"Svegliarmi con energia senza vivere di caffè",meccanismo:"[ESEMPIO] Forma di magnesio scelta perché il corpo la assorbe meglio, dose serale",obiezione:"Ho già provato il magnesio del supermercato e non ha fatto niente",prove:"[ESEMPIO] 4,7 su 5 su 1.200 recensioni, soddisfatti o rimborsati 30 giorni",offerta:"Seconda confezione a metà prezzo fino a domenica",tono:"Diretto, da amica che ci è passata, mai medico",piattaforma:"Meta (Facebook e Instagram)",frasi:"Mi sveglio già stanca\nIl pomeriggio crollo sulla scrivania\nHo provato di tutto, anche le tisane\nNon voglio prendere sonniferi"};
+const KEYS=["prodotto","prezzo","cliente","problema","risultato","meccanismo","obiezione","prove","offerta","tono","piattaforma","frasi"];
+const LBL={prodotto:"prodotto",prezzo:"prezzo",cliente:"cliente ideale",problema:"il problema con le parole del cliente",risultato:"il risultato che vuole",meccanismo:"perché il prodotto funziona",obiezione:"l'obiezione principale",prove:"le prove che hai",offerta:"l'offerta attiva",tono:"il tono del brand"};
+const store={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+let fields=store.get("kg-fmx-fields",{});
+let active=new Set(store.get("kg-fmx-active",[]));
+let sel={f:0,l:0}; let fam="all";
+const $=id=>document.getElementById(id);
+
+function readForm(){document.querySelectorAll("[data-k]").forEach(el=>{fields[el.dataset.k]=el.value});}
+function fillForm(){document.querySelectorAll("[data-k]").forEach(el=>{const v=fields[el.dataset.k];if(el.tagName==="SELECT"){if(v)el.value=v}else el.value=v||""});}
+function v(k){const x=(fields[k]||"").trim();return x?x:"[DA COMPILARE: "+LBL[k]+"]";}
+
+function prompt(fi,li){
+  const f=D.formats[fi], L=D.levels[li], c=f.cells[li];
+  const frasi=(fields.frasi||"").trim();
+  const plat=(fields.piattaforma||"Meta (Facebook e Instagram)");
+  return [
+"Sei un creative strategist che scrive ads per e-commerce su "+plat+". Devi scrivere una creatività nel formato "+f.name+" per persone al livello di consapevolezza "+L.n+" su 5: "+L.name+".",
+"",
+"IL MIO BUSINESS",
+"Prodotto: "+v("prodotto"),
+"Prezzo: "+v("prezzo"),
+"Cliente ideale: "+v("cliente"),
+"Il problema, con le parole del cliente: "+v("problema"),
+"Il risultato che vuole: "+v("risultato"),
+"Perché il prodotto funziona: "+v("meccanismo"),
+"L'obiezione principale: "+v("obiezione"),
+"Prove che ho: "+v("prove"),
+"Offerta attiva: "+v("offerta"),
+"Tono del brand: "+v("tono"),
+"",
+"FRASI VERE DEI CLIENTI, DA USARE PAROLA PER PAROLA",
+frasi?frasi:"[DA COMPILARE: incolla le frasi della tua Customer Language Bank, oppure recensioni e commenti dei clienti]",
+"",
+"CHI GUARDA · LIVELLO "+L.n+" · "+L.name.toUpperCase(),
+L.who,
+"Cosa deve fare la creatività: "+L.job,
+"Cosa evitare: "+L.avoid,
+"Chiusura e invito all'azione: "+L.close,
+"",
+"IL FORMATO · "+f.name.toUpperCase(),
+f.desc+". Durata indicativa: "+f.dur+".",
+"Regole di produzione: "+f.prod,
+"",
+"L'ANGOLO DA SVILUPPARE",
+c.label+". "+c.angle,
+"",
+"COSA MI DEVI CONSEGNARE",
+"1. Tre hook diversi per i primi 3 secondi. Per ognuno: cosa si vede, cosa si sente, testo a schermo. Devono cambiare la scena o la persona, non solo le parole.",
+"2. Lo script completo diviso in scene (o schermate, o immagini se il formato è statico), con la durata di ognuna: cosa si vede, cosa si sente o si dice, testo a schermo.",
+"3. Le note di produzione per chi gira o monta: inquadrature, luce, audio, chi compare, oggetti che servono.",
+"4. Il copy dell'annuncio: testo principale con la prima riga che regge da sola, titolo, pulsante.",
+"5. Una variante dello stesso concept in cui cambia un solo elemento. Dimmi quale elemento e perché.",
+"",
+"REGOLE",
+"- Usa le frasi dei clienti parola per parola dove puoi. Il cliente deve riconoscere le sue parole.",
+"- Non inventare recensioni, numeri, risultati, testimonianze o certificazioni. Dove servono e non te li ho dati, scrivi [DA INSERIRE].",
+"- Un solo messaggio per creatività.",
+"- Linguaggio parlato, come lo direbbe il cliente. Niente frasi da pubblicità e nessuna promessa che non posso mantenere.",
+"- Il livello di consapevolezza decide cosa dire, il formato decide come mostrarlo. Se le due cose si scontrano, vince il livello.",
+"- Se trovi un dato segnato [DA COMPILARE], fammi prima le domande che ti servono e scrivi solo dopo le mie risposte."
+  ].join("\n");
+}
+
+function key(fi,li){return fi+"-"+li}
+function renderLevels(){
+  const counts=[0,0,0,0,0]; active.forEach(k=>{const l=+k.split("-")[1]; if(l>=0&&l<5)counts[l]++});
+  $("levels").innerHTML=D.levels.map((L,i)=>`<div class="lv"><span class="num">${L.n}</span><span class="nm">${L.name}</span><span class="wh">${L.who}</span><span class="ex">${L.example}</span><span class="cov ${counts[i]?"on":""}">${counts[i]?counts[i]+(counts[i]===1?" creatività attiva":" creatività attive"):"Nessuna creatività attiva"}</span></div>`).join("");
+  const cov=counts.filter(x=>x>0).length;
+  $("covsum").innerHTML=`Livelli coperti: <b>${cov}</b> di 5`;
+}
+function renderHead(){
+  $("thr").innerHTML='<th class="fcol" scope="col">Formato</th>'+D.levels.map(L=>`<th scope="col"><span class="ln">${L.n}</span>${L.short}</th>`).join("");
+  const fams=[["all","Tutti"]].concat(Object.entries(D.fam));
+  $("chips").innerHTML=fams.map(([k,n])=>`<button type="button" class="chip" data-fam="${k}" aria-pressed="${k===fam}">${n}</button>`).join("");
+}
+function renderBody(){
+  $("tb").innerHTML=D.formats.map((f,fi)=>`<tr data-fi="${fi}" data-fam="${f.fam}"><td class="fcol"><div class="fname"><span class="fnum">${String(f.n).padStart(2,"0")}</span>${f.name}</div><div class="fdesc">${f.desc}</div><span class="ffam">${D.fam[f.fam]}</span></td>`+
+    f.cells.map((c,li)=>{const best=f.best.includes(li+1);return `<td class="c" data-best="${best}"><button type="button" class="cell ${active.has(key(fi,li))?"act":""}" data-fi="${fi}" data-li="${li}" aria-pressed="${sel.f===fi&&sel.l===li}" aria-label="${f.name}, livello ${li+1}: ${c.label}">${best?'<i class="dot" aria-hidden="true"></i>':""}${c.label}</button></td>`}).join("")+"</tr>").join("");
+  applyFilter();
+}
+function applyFilter(){
+  const q=$("q").value.trim().toLowerCase(), ob=$("onlybest").checked; let shown=0;
+  document.querySelectorAll("#tb tr").forEach(tr=>{
+    const f=D.formats[+tr.dataset.fi];
+    const ok=(fam==="all"||f.fam===fam)&&(!q||(f.name+" "+f.desc).toLowerCase().includes(q));
+    tr.classList.toggle("hidden",!ok); if(ok)shown++;
+    tr.querySelectorAll("td.c").forEach(td=>{td.querySelector(".cell").style.visibility=(ob&&td.dataset.best!=="true")?"hidden":"visible"});
+  });
+  $("noresults").hidden=shown>0;
+}
+function renderPanel(){
+  const f=D.formats[sel.f], L=D.levels[sel.l], c=f.cells[sel.l], best=f.best.includes(sel.l+1);
+  $("p-lv").textContent="Livello "+L.n+" · "+L.short;
+  $("p-best").textContent=best?"Combinazione consigliata":"";
+  $("p-title").textContent=f.name;
+  $("p-angle").innerHTML="<b>"+c.label+".</b> "+c.angle;
+  $("p-pre").textContent=prompt(sel.f,sel.l);
+  const on=active.has(key(sel.f,sel.l));
+  $("b-act").setAttribute("aria-pressed",on); $("b-act").textContent=on?"Attiva ✓ (togli)":"Segna come attiva";
+}
+function select(fi,li,open){
+  sel={f:fi,l:li};
+  document.querySelectorAll(".cell[aria-pressed='true']").forEach(b=>b.setAttribute("aria-pressed","false"));
+  const b=document.querySelector(`.cell[data-fi="${fi}"][data-li="${li}"]`); if(b)b.setAttribute("aria-pressed","true");
+  renderPanel(); if(open)$("panel").classList.remove("closed");
+}
+function toast(t){const el=$("toast");el.textContent=t;el.hidden=false;clearTimeout(toast._t);toast._t=setTimeout(()=>el.hidden=true,1600);}
+function exState(){const isEx=KEYS.every(k=>(fields[k]||"")===(EX[k]||""));$("exnote").hidden=!isEx;$("emnote").hidden=isEx;}
+
+$("form").addEventListener("input",()=>{readForm();store.set("kg-fmx-fields",fields);exState();renderPanel();});
+$("form").addEventListener("submit",e=>e.preventDefault());
+$("b-ex").addEventListener("click",()=>{fields=Object.assign({},EX);fillForm();store.set("kg-fmx-fields",fields);exState();renderPanel();});
+$("b-clear").addEventListener("click",()=>{fields={};fillForm();store.set("kg-fmx-fields",fields);exState();renderPanel();});
+$("tb").addEventListener("click",e=>{const b=e.target.closest(".cell");if(b)select(+b.dataset.fi,+b.dataset.li,true);});
+$("chips").addEventListener("click",e=>{const b=e.target.closest(".chip");if(!b)return;fam=b.dataset.fam;document.querySelectorAll(".chip").forEach(c=>c.setAttribute("aria-pressed",c===b));applyFilter();});
+$("q").addEventListener("input",applyFilter);
+$("onlybest").addEventListener("change",applyFilter);
+$("p-close").addEventListener("click",()=>$("panel").classList.add("closed"));
+$("b-act").addEventListener("click",()=>{const k=key(sel.f,sel.l);active.has(k)?active.delete(k):active.add(k);store.set("kg-fmx-active",[...active]);
+  const b=document.querySelector(`.cell[data-fi="${sel.f}"][data-li="${sel.l}"]`);if(b)b.classList.toggle("act",active.has(k));renderLevels();renderPanel();});
+$("b-copy").addEventListener("click",()=>{const t=$("p-pre").textContent;
+  const fallback=()=>{const r=document.createRange();r.selectNodeContents($("p-pre"));const s=getSelection();s.removeAllRanges();s.addRange(r);toast("Testo selezionato: premi Copia");};
+  try{navigator.clipboard.writeText(t).then(()=>toast("Prompt copiato"),fallback)}catch(e){fallback()}});
+
+fillForm(); exState(); renderHead(); renderLevels(); renderBody();
+if(window.matchMedia("(max-width:1100px)").matches)$("panel").classList.add("closed");
+select(0,0,false);
+</script>
